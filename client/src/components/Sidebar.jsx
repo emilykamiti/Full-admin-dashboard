@@ -1,10 +1,10 @@
 import React from "react";
 import {
   Box,
-  //   Divider,
+  Divider,
   Drawer,
   IconButton,
-  //   ImageListItemBar,
+  // ImageListItemBar,
   List,
   ListItem,
   ListItemButton,
@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 
 import {
-  //   SettingsOutlined,
+  SettingsOutlined,
   ChevronLeft,
   ChevronRightOutlined,
   HomeOutlined,
@@ -25,7 +25,7 @@ import {
   PublicOutlined,
   PointOfSaleOutlined,
   TodayOutlined,
-  //   Typography,
+  // Typography,
   CalendarMonthOutlined,
   AdminPanelSettingsOutlined,
   TrendingUpOutlined,
@@ -35,7 +35,7 @@ import {
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import FlexBetween from "./FlexBetween";
-// import profileImage from "assets/first.jpg";
+import profileImage from "assets/first.jpg";
 
 const navItems = [
   {
@@ -98,6 +98,7 @@ const navItems = [
   },
 ];
 const Sidebar = ({
+  user,
   drawerWidth,
   isSidebarOpen,
   setIsSidebarOpen,
@@ -140,7 +141,7 @@ const Sidebar = ({
                   </Typography>
                 </Box>
                 {!isNonMobile && (
-                  <IconButton onclick={() => setIsSidebarOpen(!isSidebarOpen)}>
+                  <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
                     <ChevronLeft />
                   </IconButton>
                 )}
@@ -153,7 +154,7 @@ const Sidebar = ({
                     <Typography
                       key={text}
                       sx={{
-                        ml: "3rem", // Match left margin of icons
+                        ml: "2.5rem", // Match left margin of icons
                         my: "1rem", // Adjust top and bottom margin
                       }}
                     >
@@ -183,7 +184,7 @@ const Sidebar = ({
                     >
                       <ListItemIcon
                         sx={{
-                          ml: "2rem",
+                          ml: "1.5rem",
                           color:
                             active === lcText
                               ? theme.palette.primary[600]
@@ -202,6 +203,43 @@ const Sidebar = ({
                 );
               })}
             </List>
+          </Box>
+          <Box position="absolute" bottom="0rem">
+            <Divider />
+
+            <FlexBetween
+              textTransform="none"
+              gap="1rem"
+              m="0.1rem 2rem  0 3rem"
+            >
+              <Box
+                component="img"
+                alt="profile"
+                src={profileImage}
+                height="40px"
+                width="40px"
+                borderRadius="50%"
+                sx={{ ObjectFit: "cover" }}
+              />
+              <Box textAlign="center">
+                <Typography
+                  fontWeight="bold"
+                  fontSize="0.9rem"
+                  sx={{ color: theme.palette.secondary[100] }}
+                >
+                  {user.name}
+                </Typography>
+                <Typography
+                  fontSize="0.8rem"
+                  sx={{ color: theme.palette.secondary[200] }}
+                >
+                  {user.occupation}
+                </Typography>
+              </Box>
+              <SettingsOutlined
+                sx={{ color: theme.palette.secondary[300], fontSize: "25px" }}
+              />
+            </FlexBetween>
           </Box>
         </Drawer>
       )}
