@@ -15,7 +15,7 @@ const Layout = () => {
   console.log("data", data);
 
   return (
-    <Box display={isNonMobile ? "flex" : "block"} width="100%" height="150%">
+    <Box display={isNonMobile ? "flex" : "block"} width="100%" height="100vh">
       <Sidebar
         user={data || {}}
         isNonMobile={isNonMobile}
@@ -23,13 +23,21 @@ const Layout = () => {
         isSidebarOpen={isSidebarOpen}
         setIsSidebarOpen={setIsSidebarOpen}
       />
-      <Box flexGrow={1}>
+      <Box flexGrow={1} display="flex" flexDirection="column">
         <Navbar
-          // user={data || {}}
+          user={data || {}}
           isSidebarOpen={isSidebarOpen}
           setIsSidebarOpen={setIsSidebarOpen}
         />
-        <Outlet />
+
+        <Box
+          flexGrow={1}
+          p={2}
+          overflow="auto"
+          sx={{ marginTop: "64px" }} // Adjust this height to match Navbar's height
+        >
+          <Outlet />
+        </Box>
       </Box>
     </Box>
   );

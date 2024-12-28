@@ -4,7 +4,6 @@ import {
   Divider,
   Drawer,
   IconButton,
-  // ImageListItemBar,
   List,
   ListItem,
   ListItemButton,
@@ -25,7 +24,6 @@ import {
   PublicOutlined,
   PointOfSaleOutlined,
   TodayOutlined,
-  // Typography,
   CalendarMonthOutlined,
   AdminPanelSettingsOutlined,
   TrendingUpOutlined,
@@ -38,65 +36,22 @@ import FlexBetween from "./FlexBetween";
 import profileImage from "assets/first.jpg";
 
 const navItems = [
-  {
-    text: "Dashboard",
-    icon: <HomeOutlined />,
-  },
-  {
-    text: "Client Facing",
-    icon: null,
-  },
-  {
-    text: "Products",
-    icon: <ShoppingCartOutlined />,
-  },
-  {
-    text: "Customers",
-    icon: <Groups2Outlined />,
-  },
-  {
-    text: "Transactions",
-    icon: <ReceiptLongOutlined />,
-  },
-  {
-    text: "Geography",
-    icon: <PublicOutlined />,
-  },
-
-  {
-    text: "Sales",
-    icon: null,
-  },
-  {
-    text: "Overview",
-    icon: <PointOfSaleOutlined />,
-  },
-
-  {
-    text: "Daily",
-    icon: <TodayOutlined />,
-  },
-  {
-    text: "Monthly",
-    icon: <CalendarMonthOutlined />,
-  },
-  {
-    text: "Breakdown",
-    icon: <PieChartOutlined />,
-  },
-  {
-    text: "Management",
-    icon: null,
-  },
-  {
-    text: "Admin",
-    icon: <AdminPanelSettingsOutlined />,
-  },
-  {
-    text: "Performance",
-    icon: <TrendingUpOutlined />,
-  },
+  { text: "Dashboard", icon: <HomeOutlined /> },
+  { text: "Client Facing", icon: null },
+  { text: "Products", icon: <ShoppingCartOutlined /> },
+  { text: "Customers", icon: <Groups2Outlined /> },
+  { text: "Transactions", icon: <ReceiptLongOutlined /> },
+  { text: "Geography", icon: <PublicOutlined /> },
+  { text: "Sales", icon: null },
+  { text: "Overview", icon: <PointOfSaleOutlined /> },
+  { text: "Daily", icon: <TodayOutlined /> },
+  { text: "Monthly", icon: <CalendarMonthOutlined /> },
+  { text: "Breakdown", icon: <PieChartOutlined /> },
+  { text: "Management", icon: null },
+  { text: "Admin", icon: <AdminPanelSettingsOutlined /> },
+  { text: "Performance", icon: <TrendingUpOutlined /> },
 ];
+
 const Sidebar = ({
   user,
   drawerWidth,
@@ -129,15 +84,18 @@ const Sidebar = ({
               boxSizing: "border-box",
               borderWidth: isNonMobile ? 0 : "2px",
               width: drawerWidth,
+              display: "flex", // Added
+              flexDirection: "column", // Added
+              justifyContent: "space-between", // Added
             },
           }}
         >
-          <Box width="100%">
-            <Box m="1.5rem 2rem 2rem 3rem">
+          <Box>
+            <Box m="1rem 2rem 2rem 3rem">
               <FlexBetween color={theme.palette.secondary.main}>
                 <Box display="flex" alignItems="center" gap="0.5rem">
                   <Typography variant="h4" fontWeight="bold">
-                    RAVENS RETAIL
+                    RAVENS SHOP
                   </Typography>
                 </Box>
                 {!isNonMobile && (
@@ -154,8 +112,8 @@ const Sidebar = ({
                     <Typography
                       key={text}
                       sx={{
-                        ml: "2.5rem", // Match left margin of icons
-                        my: "1rem", // Adjust top and bottom margin
+                        ml: "2rem",
+                        my: "1rem",
                       }}
                     >
                       {text}
@@ -184,7 +142,7 @@ const Sidebar = ({
                     >
                       <ListItemIcon
                         sx={{
-                          ml: "1.5rem",
+                          ml: "1rem",
                           color:
                             active === lcText
                               ? theme.palette.primary[600]
@@ -204,13 +162,12 @@ const Sidebar = ({
               })}
             </List>
           </Box>
-          <Box position="absolute" bottom="0rem">
+          <Box>
             <Divider />
-
             <FlexBetween
               textTransform="none"
               gap="1rem"
-              m="0.1rem 2rem  0 3rem"
+              m="1.5rem 2rem 1rem 2rem"
             >
               <Box
                 component="img"
@@ -219,9 +176,9 @@ const Sidebar = ({
                 height="40px"
                 width="40px"
                 borderRadius="50%"
-                sx={{ ObjectFit: "cover" }}
+                sx={{ objectFit: "cover" }}
               />
-              <Box textAlign="center">
+              <Box textAlign="left">
                 <Typography
                   fontWeight="bold"
                   fontSize="0.9rem"
