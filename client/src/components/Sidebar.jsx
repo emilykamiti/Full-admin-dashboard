@@ -84,9 +84,9 @@ const Sidebar = ({
               boxSizing: "border-box",
               borderWidth: isNonMobile ? 0 : "2px",
               width: drawerWidth,
-              display: "flex", // Added
-              flexDirection: "column", // Added
-              justifyContent: "space-between", // Added
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
             },
           }}
         >
@@ -136,7 +136,7 @@ const Sidebar = ({
                             : "transparent",
                         color:
                           active === lcText
-                            ? theme.palette.secondary[600]
+                            ? theme.palette.secondary[900]
                             : theme.palette.secondary[100],
                       }}
                     >

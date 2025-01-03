@@ -13,7 +13,15 @@ import salesRoutes from "./routes/sales.js";
 
 //dataimports
 import User from "./model/User.js";
-import { dataUser } from "./data/index.js";
+import Product from "./model/Product.js";
+import Transaction from "./model/Transaction.js";
+import ProductStat from "./model/ProductStat.js";
+import {
+  dataUser,
+  dataProduct,
+  dataProductStat,
+  dataTransaction,
+} from "./data/index.js";
 
 //configurations
 dotenv.config();
@@ -36,14 +44,14 @@ app.use("/sales", salesRoutes);
 
 const PORT = process.env.PORT || 9000;
 mongoose
-  .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.MONGO_URL)
   .then(() => {
     app.listen(PORT, () => console.log(`server Port: ${PORT}`));
 
-    //ONLY ADD DATA ONE TIME
-    // User.insertMany(dataUser);
+    //!ONLY ADD DATA ONE TIME
+    // Product.insertMany(dataProduct);
+    // Transaction.insertMany(dataTransaction);
+    // ProductStat.insertMany(dataProductStat);
+    // User.insertMany(dataUser)
   })
   .catch((error) => console.log(`${error} did not connect`));
