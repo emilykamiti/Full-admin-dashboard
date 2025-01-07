@@ -3,6 +3,7 @@ import Transaction from "../model/Transaction.js";
 import User from "../model/User.js";
 import ProductStat from "../model/ProductStat.js";
 import getCountryISO3 from "country-iso-2-to-3";
+import OverallStat from "../model/OverallStat.js";
 
 export const getProducts = async (req, res) => {
   try {
@@ -73,6 +74,7 @@ export const getTransactions = async (req, res) => {
 export const getGeography = async (req, res) => {
   try {
     const users = await User.find();
+    console.log(users);
     const mappedLocations = users.reduce((acc, { country }) => {
       const countryISO3 = getCountryISO3(country);
       if (!acc[countryISO3]) {
@@ -87,9 +89,11 @@ export const getGeography = async (req, res) => {
         return { id: country, value: count };
       }
     );
-
+    console.log("Formatted locations:", formattedLocations);
     res.status(200).json(formattedLocations);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
 };
+
+export const getOverallStat = async (req, res) => {};
